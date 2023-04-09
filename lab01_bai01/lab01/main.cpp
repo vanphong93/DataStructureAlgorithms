@@ -56,7 +56,7 @@ void createList(List &l)
 {
     l.head = l.tail = NULL;
 }
-//11 hàm in danh sách
+// 11 hàm in danh sách
 void printList(List l)
 {
     for (node *i = l.head; i != NULL; i = i->pnext)
@@ -82,7 +82,7 @@ void inputNumber(List &l, int &n)
 //  số lượng nhập ngẫu nhiên [39;59]
 void randomList(List &l)
 {
-    int n = 39 + rand() % 21;
+    int n = 0 + rand() % 21;
 
     for (int i = 1; i <= n; i++)
     {
@@ -99,21 +99,7 @@ void copyArr(List &l, int *arr, int length)
         addTail(l, createNode(value));
     }
 }
-// 8 viết hàm chèn node vào giữa danh sách
-// void insertNum(List &l, int *arr, int length, int &number)
-// {
-//     cout << "nhap so chen giua number=";
-//     cin >> number;
-//     int middle = length / 2;
-//     for (int i = 0; i < length; i++)
-//     {
-//         if (i == middle)
-//         {
-//             addTail(l, createNode(number));
-//         }
-//         addTail(l, createNode(*(arr + i)));
-//     }
-// }
+// 8 viet ham chen node vao giua danh sach
 void addMid(List &l, node *p)
 {
     if (l.tail == NULL)
@@ -125,33 +111,39 @@ void addMid(List &l, node *p)
     {
         l.tail->pnext = p;
         l.tail = p;
-        // l.head = p;
     }
 }
-//9 viết hàm thêm giá trị X đằng sau giá trị Y
-//12viết hàm in giá trị kèm địa chỉ node trong danh sách
 void printPlus(List l)
 {
     for (node *i = l.head; i != NULL; i = i->pnext)
     {
-        cout << i->data<<"--"<<i << "\t";
+        cout << i->data << "/" << i << endl;
     }
     cout << endl;
+}
+int counter(List l)
+{
+    int n = 0;
+    for (node *i = l.head; i != NULL; i = i->pnext)
+    {
+        n++;
+    }
+    return n;
 }
 int main()
 {
     int n;
     int number;
-    int array[] = {1, 12, 32, 4};
-    int length = sizeof(array) / sizeof(*array);
-    srand(time(0));
+    // int array[] = {1, 12, 32, 4};
+    // int length = sizeof(array) / sizeof(*array);
+    // srand(time(0));
     List l;
     createList(l);
     // randomList(l);
-    // inputNumber(l, n);
-    copyArr(l, array, length);
-    // insertNum(l, array, length, number);
+    addHead(l, createNode(2));
+    addHead(l, createNode(3));
+    addHead(l, createNode(12));
+    addHead(l, createNode(11));
     printList(l);
-    // printPlus(l);
     return 0;
 }
