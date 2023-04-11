@@ -1,5 +1,5 @@
 #include <iostream>
-#include <time.h>
+#include <math.h>
 #include <array>
 using namespace std;
 // 1 xay dung cau truc va cau truc danh sach lien ket don
@@ -130,6 +130,94 @@ int counter(List l)
     }
     return n;
 }
+node *middle(List l)
+{
+    int compare = 0;
+    int n;
+    if (counter(l) % 2 == 0)
+    {
+        n = counter(l) / 2;
+    }
+    else
+    {
+        n = counter(l) / 2 + 1;
+    }
+    node *p;
+    for (node *i = l.head; i != NULL; i = i->pnext)
+    {
+        compare++;
+        if (compare == n)
+        {
+            p = i;
+            break;
+        }
+    }
+    return p;
+}
+node *findNode(List l, int value)
+{
+    node *p;
+    for (node *i = l.head; i != NULL; i = i->pnext)
+    {
+        if (i->data == value)
+        {
+            p = i;
+            return p;
+        }
+    }
+    return p;
+}
+bool isExist(List l, int value)
+{
+    node *p;
+    for (node *i = l.head; i != NULL; i = i->pnext)
+    {
+        if (i->data == value)
+            return true;
+    }
+    return false;
+}
+void insertMid(List &l, node *q, node *p)
+{
+    //neu ton tai node q thi thuc hien chen giua
+    if (q != NULL)
+    {
+        //gan con tro next node p bang con tro next node q
+        p->pnext = q->pnext;
+        //gan con tro next node q bang node p
+        q->pnext = p;
+        //neu q la phan tu cuoi cung thi chen node p vao cuoi
+        if (q == l.tail)
+        {
+            l.tail = p;
+        }
+    }
+    //nguoc lai khong ton tai node q thi chen node p vao dau
+    else
+    {
+        //goi ham chen dau
+        addHead(l, p);
+    }
+}
+node *findBefore(List &l, node *value)
+{
+    node *p;
+    node *temporary = l.head;
+    for (node *i = l.head; i != NULL; i = i->pnext)
+    {
+        if (i->data == value->data)
+        {
+            p = temporary;
+            // return p;
+        }
+        temporary = i;
+    }
+    return p;
+}
+int printValue(node *p)
+{
+    return p->data;
+}
 int main()
 {
     int n;
@@ -142,8 +230,14 @@ int main()
     // randomList(l);
     addHead(l, createNode(2));
     addHead(l, createNode(3));
-    addHead(l, createNode(12));
     addHead(l, createNode(11));
-    printList(l);
+    addHead(l, createNode(15));
+    addHead(l, createNode(16));
+    addHead(l, createNode(17));
+    // insertMid(l, findNode(l, 11), createNode(4));
+    // insertMid(l, findBefore(l, findNode(l, 11)), createNode(4));
+    // printList(l);
+    cout << "---result---" << endl;
+    cout << isExist(l, 22) << endl;
     return 0;
 }
