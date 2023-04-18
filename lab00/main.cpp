@@ -1,7 +1,7 @@
 
 #include <cstdlib>
 #include <iostream>
-
+#include<time.h>
 using namespace std;
 // Câu1  nhập mảng từ bàn phím
 void nhapSo(float *a, int &n) {
@@ -25,7 +25,7 @@ void xuatSo(float *a, int &n) {
 // cau 2: random values
 void randomValues(float *a, int &n) {
   srand(time(NULL));
-  int input = 10 + random() % 11;
+  int input = 10 + rand() % 11;
   n = input;
   for (int i = 0; i < n; i++) {
     *(a + i) = -268 + rand() % 608;

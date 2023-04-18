@@ -1,6 +1,6 @@
 #include <iostream>
 #include <math.h>
-#include <array>
+// #include <array>
 using namespace std;
 // 1 xay dung cau truc va cau truc danh sach lien ket don
 struct node
