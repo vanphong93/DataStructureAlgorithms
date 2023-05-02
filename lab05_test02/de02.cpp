@@ -9,13 +9,7 @@ struct SinhVien
     float diemMH;
 };
 typedef SinhVien SV;
-void xuatSV(SV sv)
-{
-    cout << "\nThong tin sinh vien" << endl;
-    cout << "\t+Ma SV : " << sv.maSV << endl;
-    cout << "\t+Ho ten : " << sv.hoTen << endl;
-    cout << "\t+Diem TB : " << sv.diemMH << endl;
-}
+
 // Bước 1.Tạo cấu trúc node
 struct node
 {
@@ -78,6 +72,13 @@ Input:
 Output
     +Thong tin sinh vien: maSV,name,gpa.
 */
+void xuatSV(SV sv)
+{
+    cout << "\nThong tin sinh vien" << endl;
+    cout << "\t+Ma SV : " << sv.maSV << endl;
+    cout << "\t+Ho ten : " << sv.hoTen << endl;
+    cout << "\t+Diem TB : " << sv.diemMH << endl;
+}
 void xuat(List l)
 {
     for (node *i = l.head; i != NULL; i = i->pnext)
@@ -116,6 +117,18 @@ int demSV(List l, float diem)
     for (node *i = l.head; i != NULL; i = i->pnext)
     {
         if (i->data.diemMH < diem)
+        {
+            counter++;
+        }
+    }
+    return counter;
+}
+int countPointHigh(List l, float diem)
+{
+    int counter = 0;
+    for (node *i = l.head; i != NULL; i = i->pnext)
+    {
+        if (i->data.diemMH > diem)
         {
             counter++;
         }
@@ -169,7 +182,7 @@ Output
 */
 int *timCacMaSV(List l, float diem)
 {
-    int soSV = demSV(l, diem);
+    int soSV = countPointHigh(l, diem);
     int *arraySV = new int[soSV];
     int counter = 0;
     for (node *i = l.head; i != NULL; i = i->pnext)

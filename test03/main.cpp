@@ -121,7 +121,12 @@ void input(HashTable &h)
         }
     }
 }
-// cau 5
+/*Câu 5.Viết hàm kiem tra bang bam rong hay khong, tra ve true hoac false
+Input:
+    +HashTable &h
+Output
+    +bool
+*/
 bool tableEmpty(HashTable &h)
 {
     for (int i = 0; i < SIZE; i++)
@@ -129,14 +134,17 @@ bool tableEmpty(HashTable &h)
         node *p = h.Buckets[i].head;
         if (p != NULL)
         {
-            return false;
-        }
-        else
-        {
             return true;
         }
     }
+    return false;
 }
+/*Câu 6.Dem gia tri luu tru trong bang bam
+Input:
+    +HashTable &h
+Output
+    +int n (counter)
+*/
 int count(HashTable &h)
 {
     int n = 0;
@@ -151,7 +159,13 @@ int count(HashTable &h)
     }
     return n;
 }
-// cau7
+/*Câu 7.Viết hàm tim gia tri X, tra ve true hoac false
+Input:
+    +HashTable &h
+    +int value
+Output
+    +bool
+*/
 bool search(HashTable &h, int value)
 {
     for (int i = 0; i < SIZE; i++)
@@ -166,7 +180,14 @@ bool search(HashTable &h, int value)
     }
     return false;
 }
-// cau 8 max and min
+/*Câu 8.TIm gia tri max min trong bang
+Input:
+    +HashTable &h
+    +int max
+    +int min
+Output
+    +In ra các giá trị
+*/
 void maxMin(HashTable &h, int &max, int &min)
 {
     for (int i = 0; i < SIZE; i++)
@@ -186,7 +207,15 @@ void maxMin(HashTable &h, int &max, int &min)
         }
     }
 }
-// cau 9
+/*Câu 9.Viết hàm dem gia tri chan le va so snh
+Input:
+    +HashTable &h
+Output
+    +even > odd return 1
+    +even <odd return -1
+    + return 0
+
+*/
 int countOddEven(HashTable &h)
 {
     int odd = 0;
@@ -212,7 +241,7 @@ int countOddEven(HashTable &h)
     {
         return 1;
     }
-    else if (odd < even)
+    else if (even < odd)
     {
         return -1;
     }

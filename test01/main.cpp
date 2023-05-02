@@ -1,4 +1,9 @@
 
+/*
+Ho va ten Ho Van Phong
+Mssv 22210069
+
+*/
 #include <iostream>
 #include <cmath>
 #include <time.h>
@@ -51,7 +56,7 @@ void addNode(Tree &t, Node *p)
             }
             else if (p->data == i->data)
             {
-                cout << "Gia tri bi trung" << endl;
+
                 return;
             }
         }
